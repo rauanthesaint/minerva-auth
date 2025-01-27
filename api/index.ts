@@ -21,6 +21,6 @@ application.get('/', async (req, res) => {
     })
 })
 
-application.listen(3001, () => console.log('Server ready on port 3000'))
+application.listen(3000, () => console.log('Server ready on port 3000'))
 
 export default application
