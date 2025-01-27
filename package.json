@@ -1,7 +1,7 @@
 {
     "name": "minerva-auth",
     "version": "1.0.0",
-    "main": "index.js",
+    "main": "api/index.js",
     "scripts": {
         "dev": "nodemon",
         "build": "tsc",
