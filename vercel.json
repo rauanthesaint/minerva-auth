@@ -5,8 +5,5 @@
             "source": "/(.*)",
             "destination": "/api"
         }
-    ],
-    "scripts": {
-        "build": "tsc"
-    }
+    ]
 }
