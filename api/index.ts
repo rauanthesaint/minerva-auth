@@ -1,8 +1,9 @@
 import cors from 'cors'
 import express from 'express'
-const app = express()
+import pool from './database/config'
+const application = express()
 
-app.use(
+application.use(
     cors({
         origin: '*', // Adjust the origin as needed for security
         credentials: true,
@@ -12,12 +13,14 @@ app.use(
     })
 )
 
-app.get('/', (req, res) => {
-    res.json({
-        message: 'Hi',
+application.get('/', async (req, res) => {
+    const result = await pool.query(`SELECT * FROM users`)
+    res.status(200).json({
+        message: 'Users fetched successfully',
+        data: result.rows,
     })
 })
 
-app.listen(3000, () => console.log('Server ready on port 3000'))
+application.listen(3001, () => console.log('Server ready on port 3000'))
 
-export default app
+export default application
