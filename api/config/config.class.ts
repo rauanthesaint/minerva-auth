@@ -1,7 +1,7 @@
 import { DotenvParseOutput, config } from 'dotenv'
 import { IConfigService } from './config.interface'
 
-class ConfigService implements IConfigService {
+export class ConfigService implements IConfigService {
     private config: DotenvParseOutput
 
     constructor() {
