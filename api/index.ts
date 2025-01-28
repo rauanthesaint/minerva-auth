@@ -1,26 +1,26 @@
 import cors from 'cors'
 import express from 'express'
-import pool from './database/config'
+import router from './router'
+import { MAX_AGE } from './utils/token'
+import cookieParser from 'cookie-parser'
+import { generateKeys } from './utils/generateKeys'
 const application = express()
-
 application.use(
     cors({
-        origin: '*', // Adjust the origin as needed for security
+        origin: 'http://localhost:3000',
         credentials: true,
         methods: 'PUT, POST, GET, DELETE, PATCH, OPTIONS',
         allowedHeaders: 'Content-Type',
-        maxAge: 1800,
+        maxAge: MAX_AGE * 1000,
     })
 )
-
+application.use(express.json())
+application.use(cookieParser())
+application.use('/api', router)
 application.get('/', async (req, res) => {
-    const result = await pool.query(`SELECT * FROM users`)
-    res.status(200).json({
-        message: 'Users fetched successfully',
-        data: result.rows,
-    })
+    res.send('hi')
 })
 
-application.listen(3001, () => console.log('Server ready on port 3000'))
+application.listen(3001, () => console.log('Server ready on port 3001'))
 
 export default application
