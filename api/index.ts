@@ -3,7 +3,6 @@ import express from 'express'
 import router from './router'
 import { MAX_AGE } from './utils/token'
 import cookieParser from 'cookie-parser'
-import { generateKeys } from './utils/generateKeys'
 const application = express()
 application.use(
     cors({
@@ -17,9 +16,6 @@ application.use(
 application.use(express.json())
 application.use(cookieParser())
 application.use('/api', router)
-application.get('/', async (req, res) => {
-    res.send('hi')
-})
 
 application.listen(3001, () => console.log('Server ready on port 3001'))
 

@@ -1,19 +1,19 @@
 import {
-    authUser,
-    createRecoveryCodes,
+    getUserData,
     createUser,
     ejectUser,
-    getUser,
-    hasRecoveryKey,
-} from 'api/controller'
+    authUser,
+    compareOtp,
+} from 'api/controller/user'
 import { Router } from 'express'
 
-const router = Router()
-router.get('/user', getUser)
+const router: Router = Router()
+router.get('/user', getUserData)
 router.post('/user', createUser)
 router.post('/user/auth', authUser)
 router.post('/user/eject', ejectUser)
+router.post('/otp-verification', compareOtp)
 
-router.get('/user/recovery-codes', hasRecoveryKey)
-router.post('/user/recovery-codes', createRecoveryCodes)
 export default router
+
+// mJSnt9Q6x0e5nGzwhXeF
