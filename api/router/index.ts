@@ -13,6 +13,7 @@ router.post('/user', createUser)
 router.post('/user/auth', authUser)
 router.post('/user/eject', ejectUser)
 router.post('/otp-verification', compareOtp)
+router.post('/cerate-recovery-codes', )
 
 export default router
 

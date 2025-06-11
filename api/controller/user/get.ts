@@ -21,7 +21,6 @@ export default async function getUserData(
     try {
         // Extract JWT from cookies
         const token = request.cookies['jwt']
-        console.log(token)
         if (!token) return UnauthorizedAccessError(response)
 
         // Decode the JWT and extract the user ID
