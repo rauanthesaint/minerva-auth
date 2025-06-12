@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken'
-import { ConfigService } from '../config/config.class'
+import { ConfigService } from 'api/config/config.class'
 
 export const MAX_AGE: number = 30 * 3600 * 24 // 30 days
 const configService: ConfigService = new ConfigService()
@@ -21,4 +21,10 @@ export const decodeToken = (token: string): string => {
         id = decodedToken.id as string
     } else id = ''
     return id
+}
+
+export const tokenOptions = {
+    path: '/',
+    maxAge: MAX_AGE * 1000,
+    httpOnly: true,
 }
